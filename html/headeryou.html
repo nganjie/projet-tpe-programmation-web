@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleheader.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">AVENTURE</a>
+            <div class="nav-links">
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">adventure</a></li>
+                    <li><a href="#">support</a></li>
+                    <li><a href="#">info</a></li>
+                    <li><a href="#">contact</a></li>
+                </ul>
+            </div>
+            <img src="../image/menu-btn.png" alt="menu voiture" class="menu-hamburger">
+        </nav>
+    </header>
+</body>
+<script>
+    const menuHamberguer = document.querySelector(".menu-hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    menuHamberguer.addEventListener("click",()=>{
+        navLinks.classList.toggle("mobile-menu");
+    })
+</script>
+</html>

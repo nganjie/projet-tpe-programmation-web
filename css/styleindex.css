@@ -1,0 +1,15 @@
+body{
+    background-color:white;
+}
+.imghead{
+    position:relative;
+    width:100%;
+    color:blue;
+    height:800px;
+}
+.image-header{
+    position: relative;
+}
+.menu{
+    position:absolute;
+}
