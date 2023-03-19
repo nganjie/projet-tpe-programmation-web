@@ -1,18 +1,239 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
 *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
     text-decoration:none;
     list-style:none;
 }
 body{
     font-family:"poppins";
+    
 }
 header{
-    height: 100vH;
+    height: 50vH;
     width:100vW;
     background-image:url(../image/landscape.jpg);
     background-size:cover;
 }
+/*==========pour la maquette des vehicule==============*/
+section .card .image{
+    height:140px;
+    width: 140px;
+    border-radius: 50%;
+    background: #7d2ae8;
+    padding:3px;
+    
+}
+section{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:0 35px;
+    /*background:blue;*/
+    /*background:#f2f2f2;*/
+   
+}
+section .container{
+    width: 895px;
+    
+   /* align-items: center;*/
+   
+    
+    position: relative;
+    
+}
+.content {
+    display:flex;
+    flex-direction: row;
+    overflow:hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    /*transition: .20s;*/
+   /*animation: scroll 40s linear infinite;*/
+    
+}
+
+
+.card:hover{
+    z-index:200;
+    transform: translateZ(80px);
+    /*transform: translateY(20px);*/
+
+}
+
+@keyframes scroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform: translateX(calc(-140px*2));
+    }
+}
+
+.container::before,
+.container::after{
+    background: linear-gradient(to right,rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    content:"";
+    height:100%;
+    position:absolute;
+    width:10%;
+    z-index:105;
+}
+.container .content::before{
+    left:0;
+    top:0;
+}
+.container::after{
+    background: linear-gradient(to left,rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    right:0;
+    top:0;
+    width:10%;
+    
+    transform: translateZ(180deg);
+}
+
+.content.draggins{
+    cursor:grab;
+    scroll-behavior: auto; 
+}
+.content.draggins .card{
+    pointer-events: none;
+}
+.container i#change-template{ 
+    top:50%;
+    height:46px;
+    width:46px;
+    cursor:pointer;
+    position:absolute;
+    font-size:1.2rem;
+    text-align:center;
+    line-height:46px;
+    background:orange;
+    border-radius:50%;
+    transform:translateY(-50%);
+}
+.container i#change-template:first-child{
+    left:-23px;
+    z-index:110;
+}
+.container i#change-template:last-child{
+    right:-23px;
+    z-index:110;
+}
+section .card .image img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border:3px solid #fff;
+    background: #7d2ae8;
+}
+section .card .image img:hover{
+    transform: translateZ(20%);
+}
+
+.card{
+    position:sticky;
+    background: #fff;
+    border-radius:20px;
+    margin:20px 0;
+    width:300px;
+    cursor:pointer;
+    
+    margin-left: 14px;
+    perspective: 100px;
+    
+
+}
+
+
+.card::before{
+    content:"";
+    position:absolute;
+    height:40%;
+    width:100%;
+    background: #7d2ae8;
+    border-radius:20px 20px 0 0;
+    margin-right: 14px;
+}
+.card:first-child{
+   margin-left: 12px;
+ 
+}
+.card .card-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:30px;
+    position:relative;
+    z-index:100;
+}
+.card .info-vehicule{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin-top:10px; 
+    color:#333;
+}
+.card .info-float{
+    display:flex;
+    flex-direction: row;
+}
+.info-vehicule .marque{
+    font-size: 15px;
+    font-weight:500;
+}
+.info-vehicule p{
+    width: 100%;
+}
+.info-vehicule .info-float .autre-info{
+    font-size:14px;
+    font-weight:500;
+    color:#7d2ae8;
+}
+.info-vehicule .info-float p .information{
+    color:#f81a3b;
+    margin-left:20px;
+    font-size: 14px;
+}
+.info-vehicule .nb-cheveau{
+    font-size: 12px;
+    font-weight:500;
+}
+.card .rating{
+    display:flex;
+   /* align-items: center;*/
+    /*margin-top: 10px;*/
+}
+.card .rating i{
+    font-size:18px;
+    margin:0 2px;
+    color:#7d2ae8;
+}
+.card .button{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    margin-top:20px;
+     
+}
+.card .button button{
+    background: #7d2ae8;
+    outline: none;
+    border:none;
+    color:#fff;
+    padding:8px 22px;
+    border-radius:20px;
+    font-size:12px;
+    transition:all 0.3s ease;
+} 
+.button button:hover{
+    background:#6616d0;
+}
+/*============fin=========*/
 .navbar{
     position:absolute;
     padding:50px;
@@ -25,10 +246,28 @@ header{
 .navbar a{
     color:white;
 }
+.nav-links .login a:hover{
+    color:white;
+}
+.logo .cm{
+    color:#ed3c57;
+}
+.nav-links a:hover{
+    color:#ed3c57;
+    border-bottom:4px solid #ed3c57;
+}
+
 .navbar .logo{
     font-size:2em;
     font-weight: bold;
 }
+.nav-links .login{
+    border: 2px solid #ed3c57;;
+    background-color: #ed3c57;;
+    padding:7px;
+    border-radius: 30%;
+}
+
 .navbar .nav-links ul{
     display:flex;
 } 
@@ -38,6 +277,7 @@ header{
 .navbar .nav-links ul li.active a{
     color:#ed3c57;
     font-weight: 600;
+    border-bottom:4px solid #ed3c57;
 }
 .menu-hamburger{
     display:none;
@@ -87,4 +327,120 @@ header{
     .navbar .nav-links ul li{
         margin:25px 0;
     }
+    /*===========pour le slider=============*/
+    section .card .image{
+        height:120px;
+        width: 120px;
+        
+    }
+    section .container{
+        width: 480px;
+       /* align-items: center;*/      
+    }
+   .card{
+        width:150px;
+        margin-left: 8px;
+    }
+    .card::before{
+       
+        margin-right: 8px;
+    }
+   
+    .info-vehicule .marque{
+        font-size: 12px;
+        
+    }
+    
+    .info-vehicule .info-float .autre-info{
+        font-size:10px;
+        
+    }
+    .info-vehicule .info-float p .information{
+        color:#f81a3b;
+        margin-left:15px;
+        font-size: 13px;
+    }
+    .info-vehicule .nb-cheveau{
+        font-size: 12px;
+        font-weight:500;
+    }
+  
+    .card .rating i{
+        font-size:12px;
+        margin:0 2px;
+        color:#7d2ae8;
+    }
+    .card .button{
+        
+        margin-top:20px;
+         
+    }
+    .card .button button{       
+        padding:6px 16px;
+        border-radius:20px;
+        font-size:12px;
+    } 
+    /*=================fin du slider============*/
+}
+@media screen and (max-width:542px){
+    section{
+        display:flex;
+        align-items: center;
+        justify-content:left;
+        
+       
+    }
+    .card .card-content{
+        left:2px;
+    }
+    .card .button button{       
+        padding:3px 14px;
+        border-radius:20px;
+        font-size:10px;
+    } 
+    .card .button{
+        
+        margin-top:18px;
+         
+    }
+    section .card .image{
+        height:95px;
+        width: 95px;
+        
+    }
+    section .container{
+        width: 420px;
+       /* align-items: center;*/      
+    }
+    .card{
+        width:130px;
+        margin-left: 8px;
+    }
+    .card::before{
+       
+        margin-right: 6px;
+    }
+    .info-vehicule .marque{
+        font-size: 10px;
+        
+    }
+    .info-vehicule .marque{
+        font-size: 12px;
+        
+    }
+    
+    .info-vehicule .info-float .autre-info{
+        font-size:10px;
+        
+    }
+    .info-vehicule .info-float p .information{
+        color:#f81a3b;
+        margin-left:15px;
+        font-size: 10px;
+    }
+    .info-vehicule .nb-cheveau{
+        font-size: 10px;
+        font-weight:500;
+    }
+
 }
