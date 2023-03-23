@@ -8,14 +8,16 @@ import { resetDeleteOptions } from "./resetDeleteOptions.js"
  * @return div
  */
 
-const createDOMElementForOptionsSearch = function (value) {
+const createDOMElementForOptionsSearch = function (value, key) {
 
 	const div = document.createElement("div")
 
-	console.log("value : ", value)
+	//console.log("value : ", value)
 
 	div.classList.add("search_item")
 	div.setAttribute("optionValue", value)
+	div.setAttribute("key", key)
+
 	div.innerHTML = `<span>${value}</span>
 				<span class="delete_op">×</span>`
 	div.style.backgroundColor = generateRandomColor()
@@ -24,15 +26,16 @@ const createDOMElementForOptionsSearch = function (value) {
 	const search_choice_op = document.querySelector(".search_choice_op")
 
 	if (!search_items.length) {
-		console.log("object : ", search_choice_op);
+		//console.log("object : ", search_choice_op);
 		search_choice_op.innerHTML = ""
 	}
 
-	search_choice_op.appendChild(div)
-	resetDeleteOptions()
+	//console.log("id : ", div.id);
 
-	// call the getAllOptions funtion to test it
-	console.log("Options Value : ", getAllSearchOptionsValue())
+	search_choice_op.appendChild(div)
+
+	// call it
+	resetDeleteOptions()
 
 	return div
 

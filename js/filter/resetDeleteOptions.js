@@ -1,6 +1,8 @@
 /** 
- * to delete an option and reset the container
+ *  to delete an option and reset the container
  * */
+
+import getAllSearchOptionsValue from "./getAllSearchOptions.js"
 
 export function resetDeleteOptions() {
 
@@ -16,14 +18,17 @@ function removeEletCallback(e) {
 	const search_choice_op = document.querySelector(".search_choice_op")
 
 	const currentTarget = e.currentTarget.parentElement
-	console.log("currentTarget : ", currentTarget);
+	//console.log("currentTarget : ", currentTarget);
 
 	currentTarget.removeEventListener("click", removeEletCallback)
 	currentTarget.remove()
 
 	const search_items = [...document.querySelectorAll(".search_item")]
 	if (!search_items.length) search_choice_op.textContent = "Ajouter des filtres pour obtenir des résultats plus précis"
+	// call it
+	getAllSearchOptionsValue()
 
 	console.log("removed")
+
 
 }

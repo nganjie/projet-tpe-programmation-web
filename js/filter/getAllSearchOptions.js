@@ -1,20 +1,20 @@
+import { search_choices } from "./search_filter.js";
 
 export default function getAllSearchOptionsValue() {
 
 	const search_items = [...document.querySelectorAll(".search_item")]
-	console.log("search_item", search_items);
+	//console.log("search_item", search_items);
 
 	if (!search_items.length) return null
 
-	return search_items.map(elt => {
+	return search_items.forEach(elt => {
 
-		const attribute = elt.getAttribute("optionValue")
+		const value = elt.getAttribute("optionValue")
+		const key = elt.getAttribute("key")
 
-		if (elt.classList.contains("price_item")) {
-			return { value: attribute.split("-"), key: Date.now() }
-		}
-
-		return { value: attribute, key: Date.now() }
+		// add it
+		search_choices[key] = value
+		console.log("les choix : ", search_choices);
 
 	})
 }
