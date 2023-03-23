@@ -1,11 +1,11 @@
-*,
+/**,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: serif;
-}
+}*/
 
 :root {
   --primaryBgColor: #c4c4c473;
@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-select {
+.search_wrapper select {
   padding: 0.5rem 1rem;
   background-color: var(--primaryBgColor);
   border-radius: 5px;
@@ -71,7 +71,7 @@ select {
   color: gray;
 }
 
-option {
+.search_wrapper option {
   padding: inherit;
 }
 

@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="../css/styleindex.css">
     
         <!-- css files -->
-    <link rel="stylesheet" type="text/css" href="/css/filtre_recherche.css">
+    <link rel="stylesheet" type="text/css" href="../css/filtre_recherche.css">
 
     <!-- javascript cdn and file -->
     <script src="https://unpkg.com/@spreadtheweb/multi-range-slider@1.0.2/dist/range-slider.main.min.js"></script>
-    <script src="/js/search_filter.js" type="module" defer></script>
+    
     
     <title>Document</title>
 </head>
@@ -98,4 +98,6 @@
     </div>
     
 </body>
+<script src="../js/classe.js"></script>
+<script src="../js/search_filter.js" type="module" defer></script>
 </html>

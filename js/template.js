@@ -1,3 +1,21 @@
+import {App,Vehicule,Voiture,Velo,Moto} from "../js/classe.js";
+import {search_choices,objLength} from "../js/search_filter.js";
+var b =search_choices.length;
+console.log(b);
+let r =0;
+var select_choix = document.querySelectorAll(".select-search");
+console.log(select_choix);
+function getteurdefiltre(){
+    setInterval(()=>{
+        if((r==0)||(b!=objLength(search_choices)))
+        {
+            r=1;
+            b = objLength(search_choices);
+            console.log(search_choices);
+        }
+    },7000)
+} 
+
 const carousel = document.querySelector(".content"),
  card = carousel.querySelectorAll(".card"),
 firstTemplate = carousel.querySelectorAll(".card")[0];
@@ -118,3 +136,178 @@ carousel.addEventListener("touchsmove",dragStart)
 carousel.addEventListener("mouseup",dragStop);
 carousel.addEventListener("mouseleave",dragStop);
 carousel.addEventListener("touchend",dragStop);
+console.log(search_choices);
+
+/* ================code pour gerer les template=========== */
+const vehicule1 = new Vehicule(0,4,"voiture","../image/img1",7000000,"427LT65","toyota","06-9-2014","25-7-2016","blue");
+const Voiture1 = new Voiture(0,4,"voiture","../image/img1",7000000,"427LT65","toyota","06-9-2014","25-7-2016","blue",500,400,1575,350);
+console.log(Voiture1.nb_cheveau);
+const content = document.querySelector(".content");
+
+const section_template = document.querySelector(".section-reste");
+fetch("../js/donnes.json")
+.then(response => response.json())
+.then((data)=>{
+    console.log(data);
+   var app = new App(data);
+   console.log(app.tab_object)
+   app.tab_object.map((value)=>{
+        //if(value instanceof Voiture)
+        
+        content.innerHTML +=value.template();
+        section_template.innerHTML +=value.template();
+        
+        
+    })
+    select_choix.forEach(elt =>{
+        elt.addEventListener("change",()=>{
+            var tabelt = app.Filter(search_choices);
+            console.log(app.tab_object[1]);
+            console.log(app.tab_object[1].isFilter(search_choices));
+            console.log(tabelt);
+            if(tabelt.length!=0)
+            {
+                section_template.innerHTML = "";
+                tabelt.map((valuefilter)=>{
+                    section_template.innerHTML +=valuefilter.template();
+                })
+            }
+           
+            //console.log(e);
+            console.log("rien ne va ici bas");
+        })
+    })
+    //console.log(app.tab_object);
+})
+function innerTemplateData(tab){
+   
+}
+function Template(type,tab){
+    let template;
+    if(type=="voiture")
+     {
+        console.log(tab);
+        template ="";
+       return `<div class="card" draggable="false">
+        <div class="card-content">
+            <div class="image">
+                <img src="${tab.image}"alt="un autre monde">
+            </div>
+            <div class="media-icons">
+
+            </div>
+            <div class="info-vehicule">
+                <div class="info-float">
+                    <div class="info-left">
+                        <p><span class="marque">Marque :</span></p>
+                        <p><span class="autre-info">Nombre de cheveau:</span></p>
+                        <p><span class="autre-info">date de fabrication:</span></p>
+                        <p><span class="autre-info">prix :</span></p>
+                    </div>
+                    <div class="info-right">
+                    <p><span class="information">${tab.marque}</span></p>
+                    <p><span class="information">${tab.nb_cheveau}</span></p>
+                    <p></span><span class="information">${tab.date_fab}</span></p>
+                    <p><span class="information">${tab.prix} fcfa</span></p>
+                    </div> 
+                </div>  
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>    
+                <div class="button">
+                    <button class="about"> Voir plus</button>
+                    <button class="liker">Liker </button>
+                </div>                                    
+            </div>                        
+        </div>
+    </div>`;
+     }
+     if(type=="moto"){
+        console.log(tab);
+        template = "";
+        return `<div class="card" draggable="false">
+        <div class="card-content">
+            <div class="image">
+                <img src="${tab.image}" alt="un autre monde">
+            </div>
+            <div class="media-icons">
+
+            </div>
+            <div class="info-vehicule">
+                <div class="info-float">
+                    <div class="info-left">
+                        <p><span class="marque">Marque :</span></p>
+                        <p><span class="autre-info">vistesse :</span></p>
+                        <p><span class="autre-info">date de fabrication :</span></p>
+                        <p><span class="autre-info">prix :</span></p>
+                    </div>
+                    <div class="info-right">
+                        <p><span class="information">${tab.marque}</span></p>
+                        <p><span class="information">${tab.nb_vitesse}</span></p>
+                        <p></span><span class="information">${tab.date_fab}</span></p>
+                        <p><span class="information">${tab.prix} fcfa</span></p>
+                        
+                    </div> 
+                </div>  
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>    
+                <div class="button">
+                    <button class="about"> Voir plus</button>
+                    <button class="liker">Liker </button>
+                </div>                                    
+            </div>                        
+        </div>
+    </div>`;
+     }
+     if(type=="velo"){
+        console.log(tab);
+        template = "";
+        return `<div class="card" draggable="false">
+        <div class="card-content">
+            <div class="image">
+                <img src="${tab.image}" alt="un autre monde">
+            </div>
+            <div class="media-icons">
+
+            </div>
+            <div class="info-vehicule">
+                <div class="info-float">
+                    <div class="info-left">
+                        <p><span class="marque">Marque :</span></p>
+                        <p><span class="autre-info">nombre de place:</span></p>
+                        <p><span class="autre-info">date de fabrication:</span></p>
+                        <p><span class="autre-info">prix :</span></p>
+                    </div>
+                    <div class="info-right">
+                        <p><span class="information">${tab.marque}</span></p>
+                        <p><span class="information">${tab.nb_place}</span></p>
+                        <p></span><span class="information">${tab.date_fab}</span></p>
+                        <p><span class="information">${tab.prix} fcfa</span></p>
+                        
+                    </div> 
+                </div>  
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>    
+                <div class="button">
+                    <button class="about"> Voir plus</button>
+                    <button class="liker">Liker </button>
+                </div>                                    
+            </div>                        
+        </div>
+    </div>`;
+     }
+}

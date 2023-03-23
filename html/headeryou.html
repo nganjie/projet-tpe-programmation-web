@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/styleheader.css">
+    <link rel="stylesheet" href="../css/filtre_recherche.css">
+    <script src="https://unpkg.com/@spreadtheweb/multi-range-slider@1.0.2/dist/range-slider.main.min.js"></script>
+    
     <title>Document</title>
     
 </head>
@@ -25,9 +28,10 @@
             <img src="../image/menu-btn.png" alt="menu voiture" class="menu-hamburger">
         </nav>
     </header>
+
     <section>
         <div class="container">
-            <i style="display:none" id="change-template" class="fa-solid fa-angle-left"></i>
+            <i  id="change-template" class="fa-solid fa-angle-left"></i>
             <div class="content">
                 <div class="card" draggable="false">
                     <div class="card-content">
@@ -228,9 +232,109 @@
             </div>  
             <i id="change-template" class="fa-solid fa-angle-right"></i>     
         </div>
-    </section><br><br><br><br><br><br><br><br>
+    </section>
+    <div class="search_wrapper">
+        <h1>Filtre de recherche</h1>
+        <div class="search_opt">
+            <div class="select_option">
+                <select name="pets" id="mark-select">
+                    <option value="">--Marque--</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Citroën">Citroën</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Opel">Opel</option>
+                    <option value="Volkswagen">Volkswagen
+                    </option>
+                </select>
+
+                <select name="pets" id="town-select">
+                    <option value="">--Ville--</option>
+                    <option value="Douala">Douala</option>
+                    <option value="Yaounde">Yaounde</option>
+                    <option value="Bertoua">Bertoua</option>
+                    <option value="Limbe">Limbe</option>
+                    <option value="Dschang">Dschang</option>
+                </select>
+
+                <select name="pets" id="color-select">
+                    <option value="">--Couleur--</option>
+                    <option value="">Rouge</option>
+                    <option value="Noir">Noir</option>
+                    <option value="Jaune">Jaune</option>
+                    <option value="Violet">Violet</option>
+                    <option value="Rose">Rose</option>
+                </select>
+
+                <select name="pets" id="color-select">
+                    <option value="">--Moteur--</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Wankel">Wankel</option>
+                    <option value="Stirling">Stirling</option>
+                    <option value="Culasse">Culasse</option>
+                </select>
+
+            </div>
+
+            <div class="price_wrapper">
+                <div class="min_max_pirce"><strong>Price </strong> :</div>
+                <div id="price"></div>
+            </div>
+        </div>
+
+        <div class="search_choice_op">
+            Ajouter des filtres pour obtenir des résultats plus précis
+        </div>
+        <!-- <div class="search_item">
+                <span>5000000 - 10000000</span>
+                <span class="delete_op">×</span>
+            </div> -->
+
+    </div>
+    <div class="reste-template">
+        <section class="section-reste">
+            <div class="card" draggable="false">
+                <div class="card-content">
+                    <div class="image">
+                        <img src="../image/imgheader.jpg" alt="un autre monde">
+                    </div>
+                    <div class="media-icons">
+
+                    </div>
+                    <div class="info-vehicule">
+                        <div class="info-float">
+                            <div class="info-left">
+                                <p><span class="marque">Marque :</span></p>
+                                <p><span class="autre-info">Nombre de cheveau :</span></p>
+                                <p><span class="autre-info">date de fabrication :</span></p>
+                            </div>
+                            <div class="info-right">
+                                <p><span class="information">toyota</span></p>
+                                <p><span class="information">100</span></p>
+                                <p></span><span class="information"> 2-3-2019</span></p>
+                                
+                            </div> 
+                        </div>  
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>    
+                        <div class="button">
+                            <button class="about"> Voir plus</button>
+                            <button class="liker">Liker </button>
+                        </div>                                    
+                    </div>                        
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <br><br><br><br>
 </body>
-<script src="../js/template.js"></script>
+<script src="../js/search_filter.js" type="module" defer></script>
+<script src="../js/template.js" type="module"></script>
     <script src="../js/index.js"></script>
 
 </html>

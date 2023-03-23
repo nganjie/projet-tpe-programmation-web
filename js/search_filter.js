@@ -1,5 +1,5 @@
 const COLORS = ["#fe4a49", "#2ab7ca", " #03396c", "#f6cd61", "#fe8a71", "#4169e1"]
-let search_choices = []
+ export let search_choices = []
 
 const generateRandomColor = function () {
 	const ind = Math.floor(Math.random() * COLORS.length)
@@ -23,7 +23,7 @@ slider.onChange(values => {
 
 	const stringValue = `${values[0]} - ${values[1]}`
 	createDivEletItem(stringValue)
-	search_choices.push(stringValue)
+	search_choices["prix"] = stringValue
 
 })
 
@@ -31,6 +31,7 @@ const selects = document.querySelectorAll("select")
 const search_choice_op = document.querySelector(".search_choice_op")
 
 selects.forEach(elt => {
+	//console.log(elt.id);
 
 	elt.addEventListener("change", e => {
 
@@ -38,11 +39,14 @@ selects.forEach(elt => {
 		if (!Boolean(value)) return
 
 		createDivEletItem(value)
+		console.log(elt);
 
 		// call of the deleteop function
 		resetDeleteOptions()
 
-		search_choices.push(value)
+		search_choices[elt.id] =value
+		console.log(search_choices);
+		console.log(objLength(search_choices));
 
 	})
 })
@@ -58,7 +62,7 @@ const createDivEletItem = function (value) {
 				<span class="delete_op">×</span>`
 	div.style.backgroundColor = generateRandomColor()
 
-	if (!search_choices.length) search_choice_op.textContent = ""
+	if (!objLength(search_choices)) search_choice_op.textContent = ""
 
 	search_choice_op.appendChild(div)
 	resetDeleteOptions()
@@ -79,3 +83,18 @@ function resetDeleteOptions() {
 		})
 	})
 }
+
+export function objLength(obj){
+    var i=0;
+    for(var props in obj){
+        i++;
+    }
+    return i;
+}
+//export const tab = "un balle";
+/*export search_choices;
+export function tabc()
+{
+	return search_choices;
+}*/
+

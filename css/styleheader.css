@@ -19,7 +19,8 @@ header{
     background-size:cover;
 }
 /*==========pour la maquette des vehicule==============*/
-section .card .image{
+
+.card .image img{
     height:140px;
     width: 140px;
     border-radius: 50%;
@@ -27,7 +28,14 @@ section .card .image{
     padding:3px;
     
 }
-section{
+.section-reste{
+    display:flex;
+    flex-wrap: wrap;
+   /* flex-direction: row;*/
+    /*justify-content: auto;*/
+    margin:0;
+}
+.slider-section{
     display:flex;
     align-items: center;
     justify-content: center;
@@ -36,7 +44,7 @@ section{
     /*background:#f2f2f2;*/
    
 }
-section .container{
+.slider-section .container{
     width: 895px;
     
    /* align-items: center;*/
@@ -57,7 +65,7 @@ section .container{
 }
 
 
-.card:hover{
+.slider-section .card:hover{
     z-index:200;
     transform: translateZ(80px);
     /*transform: translateY(20px);*/
@@ -111,7 +119,7 @@ section .container{
     font-size:1.2rem;
     text-align:center;
     line-height:46px;
-    background:orange;
+    background:#7d2ae8;
     border-radius:50%;
     transform:translateY(-50%);
 }
@@ -123,7 +131,7 @@ section .container{
     right:-23px;
     z-index:110;
 }
-section .card .image img{
+.slider-section.card .image img{
     height:100%;
     width:100%;
     object-fit: cover;
@@ -131,11 +139,24 @@ section .card .image img{
     border:3px solid #fff;
     background: #7d2ae8;
 }
-section .card .image img:hover{
+.slider-section .card .image img:hover{
     transform: translateZ(20%);
 }
-
-.card{
+.section-reste .card{
+    position:sticky;
+    background: #fff;
+    border-radius:20px;
+    margin:20px 0;
+    width:250px;
+    cursor:pointer;
+    
+    margin-left: 5px;
+    perspective: 100px;
+}
+.section-reste .card p{
+    font-size: 0.9rem;
+}
+.slider-section .card{
     position:sticky;
     background: #fff;
     border-radius:20px;
@@ -182,6 +203,10 @@ section .card .image img:hover{
     display:flex;
     flex-direction: row;
 }
+.section-reste .card .info-vehicule .marque{
+    font-size: 0.8rem;
+    font-weight:400;
+}
 .info-vehicule .marque{
     font-size: 15px;
     font-weight:500;
@@ -189,10 +214,20 @@ section .card .image img:hover{
 .info-vehicule p{
     width: 100%;
 }
+.section-reste .card .info-vehicule .autre-info{
+    font-size:0.7rem;
+    font-weight:500;
+    color:#7d2ae8;
+}
 .info-vehicule .info-float .autre-info{
     font-size:14px;
     font-weight:500;
     color:#7d2ae8;
+}
+.section-reste .card .info-vehicule .info-float p .information{
+    color:#f81a3b;
+    margin-left:3px;
+    font-size: 0.7rem;
 }
 .info-vehicule .info-float p .information{
     color:#f81a3b;
