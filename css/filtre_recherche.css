@@ -17,8 +17,8 @@
   color: gray;
   max-width: 600px;
   margin: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 
   display: flex;
   flex-direction: column;
@@ -36,6 +36,18 @@
   justify-content: space-around;
   flex-wrap: wrap;
   margin-bottom: 2rem;
+  row-gap: 1rem;
+  /* column-gap: 1rem; */
+}
+
+.select_option select {
+  padding: 0.5rem 1rem;
+  background-color: var(--primaryBgColor);
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  color: gray;
+  width: 30%;
 }
 
 .search_choice_op {
@@ -60,15 +72,6 @@
 
 .delete_op {
   cursor: pointer;
-}
-
-select {
-  padding: 0.5rem 1rem;
-  background-color: var(--primaryBgColor);
-  border-radius: 5px;
-  border: none;
-  font-size: 1rem;
-  color: gray;
 }
 
 option {
