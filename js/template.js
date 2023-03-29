@@ -5,16 +5,6 @@ console.log(b);
 let r =0;
 var select_choix = document.querySelectorAll(".select-search");
 console.log(select_choix);
-function getteurdefiltre(){
-    setInterval(()=>{
-        if((r==0)||(b!=objLength(search_choices)))
-        {
-            r=1;
-            b = objLength(search_choices);
-            console.log(search_choices);
-        }
-    },7000)
-} 
 
 const carousel = document.querySelector(".content"),
  card = carousel.querySelectorAll(".card"),
@@ -159,24 +149,51 @@ fetch("../js/donnes.json")
         
         
     })
-    select_choix.forEach(elt =>{
-        elt.addEventListener("change",()=>{
-            var tabelt = app.Filter(search_choices);
-            console.log(app.tab_object[1]);
-            console.log(app.tab_object[1].isFilter(search_choices));
-            console.log(tabelt);
-            if(tabelt.length!=0)
+    /*var b =0;
+    setInterval(()=>{
+        if()
+    },3000)*/
+    function getteurdefiltre(){
+        setInterval(()=>{
+            //console.log(objLength(search_choices));
+            //console.log(b!=objLength(search_choices));
+            if((r==0)||(b!=objLength(search_choices)))
             {
-                section_template.innerHTML = "";
-                tabelt.map((valuefilter)=>{
-                    section_template.innerHTML +=valuefilter.template();
-                })
+                r=1;
+                b = objLength(search_choices);
+                console.log(search_choices);
+                console.log("un monde en couille");
+                refreshFilter();
             }
-           
-            //console.log(e);
-            console.log("rien ne va ici bas");
-        })
+        },7000)
+    } 
+    getteurdefiltre();
+    select_choix.forEach(elt =>{
+        elt.addEventListener("change",refreshFilter)
     })
+    function refreshFilter(elt){
+        var tabelt = app.Filter(search_choices);
+        console.log("debut du spectacle");
+        console.log(search_choices);
+       // console.log(app.tab_object[1]);
+        //console.log(app.tab_object[1].isFilter(search_choices));
+        console.log(tabelt);
+        if(tabelt.length!=0)
+        {
+            section_template.innerHTML = "";
+            tabelt.map((valuefilter)=>{
+                section_template.innerHTML +=valuefilter.template();
+            })
+        }else {
+            setTimeout(()=>{
+                alert("aucun vehicule ne correspond à ses caractèristiques");
+            },1000)
+           
+        }
+       
+        //console.log(e);
+        console.log("rien ne va ici bas");
+    }
     //console.log(app.tab_object);
 })
 function innerTemplateData(tab){

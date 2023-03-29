@@ -46,33 +46,33 @@ export class Vehicule{
         for(var option in tbFilter){
             if(option=="marque")
              {
-                console.log(option);
+                //console.log(option);
                 if(tbFilter[option].toLowerCase()==this.marque.toLowerCase())
                 c++;
              }else if(option=="ville")
              {
-                console.log(option);
+                //console.log(option);
                 if(tbFilter[option].toLowerCase()==this.ville.toLowerCase())
                 c++;
              }else if(option=="couleur")
              {
-                console.log(option);
+                //console.log(option);
                 if(tbFilter[option].toLowerCase()==this.couleur.toLowerCase())
                 c++;
              }else if(option=="prix")
              {
-                console.log(option);
+                //console.log(option);
                 if(tbFilter[option]>=this.prix)
                 c++;
              }else if(option=="moteur"&&this.typeV=="voiture")
              {
-                console.log(option);
+                //console.log(option);
                 if(tbFilter[option].toLowerCase()==this.moteur.toLowerCase())
                 c++;
              }
              
         }
-        console.log("la valeur de c : "+c+" la valeur de b :"+b);
+        //console.log("la valeur de c : "+c+" la valeur de b :"+b);
         if(c==b)
         return true;
         

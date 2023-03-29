@@ -109,6 +109,7 @@
                     <option value="Jaune">Jaune</option>
                     <option value="Violet">Violet</option>
                     <option value="Rose">Rose</option>
+                    <option value="Bleu">Bleu</option>
                 </select>
 
                 <select name="pets" id="moteur" class="select-search">

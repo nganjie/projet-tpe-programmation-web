@@ -75,8 +75,20 @@ function resetDeleteOptions() {
 	console.log(delete_op)
 	delete_op.forEach(elt => {
 		elt.addEventListener("click", function (e) {
+			
 			console.log("removed")
-			elt.parentElement.parentElement.removeChild(elt.parentElement)
+			var element = elt.parentElement.querySelector("span").textContent
+			//console.log(elt.parentElement.querySelector("span").textContent);
+			
+			elt.parentElement.remove();
+			//elt.parentElement.removeChild(elt.parentElement.querySelector("span"));
+			//elt.parentElement.parentElement.removeChild(elt.parentElement);
+			
+			var index  = search_choices.indexOf(element);
+			var key =KeysTab(element,search_choices);
+			console.log(key);
+			delete search_choices[key];
+			console.log(search_choices);
 
 			const textContent = search_choice_op.textContent
 			if (!textContent) search_choice_op.textContent = "Ajouter des filtres pour obtenir des résultats plus précis"
@@ -90,6 +102,19 @@ export function objLength(obj){
         i++;
     }
     return i;
+}
+function KeysTab(value,tab)
+{
+	console.log("ça commence :"+objLength(tab));
+	console.log(tab);
+	for(var key in tab)
+	{
+		if(tab[key]==value)
+		{
+			return key;
+		}
+		//console.log(key);
+	}
 }
 //export const tab = "un balle";
 /*export search_choices;
