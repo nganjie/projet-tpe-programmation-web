@@ -7,8 +7,8 @@ const generateRandomColor = function () {
 }
 
 const slider = new RangeSlider("#price", {
-	values: [23_500_000, 50_000_000],
-	min: 10_000_000,
+	values: [23_500_00, 50_000_000],
+	min: 1_000_000,
 	max: 100_000_000,
 	step: 10_000,
 	railHeight: 3,
@@ -16,35 +16,62 @@ const slider = new RangeSlider("#price", {
 	pointRadius: 10
 })
 const min_max_pirce = document.querySelector(".min_max_pirce")
+var tmp_price;
+var tmp_d =0;
 slider.onChange(values => {
 	if (!min_max_pirce) return
 
 	min_max_pirce.innerHTML = `<strong>Price </strong> : (${values[0]} fcfa , ${values[1]} fcfa)`
 
-	const stringValue = `${values[0]} - ${values[1]}`
+	const stringValue = `${values[0]} - ${values[1]}`;
+	if(tmp_d!=0)
+	{
+		console.log(tmp_d);
+		console.log("je suis malade");
+		console.log(search_choice_op.querySelector("#prix"));
+		var number_choice = search_choice_op.querySelector("#prix");
+		number_choice.click();
+		delete search_choices["prix_min"];
+		delete search_choices["prix_max"];
+			console.log(search_choices);
+		console.log(search_choice_op);
+	}
+	if(tmp_d==0)
+	{
+		tmp_price = stringValue;
+		tmp_d++;
+	}
+	
+	
 	createDivEletItem(stringValue)
-	search_choices["prix"] = stringValue
+	search_choices["prix_min"] = values[0];
+	search_choices["prix_max"] = values[1];
+	
+	
+	console.log(Number(stringValue.slice(0,4)));
+	console.log(search_choices["prix_max"]);
 
 })
 
-const selects = document.querySelectorAll("select")
+const selects = document.querySelectorAll(".select-search");
+console.log(selects);
 const search_choice_op = document.querySelector(".search_choice_op")
 
 selects.forEach(elt => {
-	//console.log(elt.id);
+	console.log(elt.id);
 
 	elt.addEventListener("change", e => {
-
-		const value = elt.value
-		if (!Boolean(value)) return
-
-		createDivEletItem(value)
+		//console.log(elt.id);
+		//const value = elt.value
+		console.log(elt.value);
+		if (!Boolean(elt.value)) return;
+		createDivEletItem(elt.value)
 		console.log(elt);
 
 		// call of the deleteop function
 		resetDeleteOptions()
 
-		search_choices[elt.id] =value
+		search_choices[elt.id] =elt.value
 		console.log(search_choices);
 		console.log(objLength(search_choices));
 
@@ -53,13 +80,18 @@ selects.forEach(elt => {
 
 const createDivEletItem = function (value) {
 	const div = document.createElement("div")
-
+    var idValue;
+	
+	if(Number(value.slice(0,4)))
+	{
+		idValue = "prix";
+	}else idValue="all";
 	console.log(value)
 	console.log(div)
 
 	div.classList.add("search_item")
-	div.innerHTML = `<span>${value}</span>
-				<span class="delete_op">×</span>`
+	div.innerHTML = `<span >${value}</span>
+				<span class="delete_op" id="${idValue}">×</span>`
 	div.style.backgroundColor = generateRandomColor()
 
 	if (!objLength(search_choices)) search_choice_op.textContent = ""

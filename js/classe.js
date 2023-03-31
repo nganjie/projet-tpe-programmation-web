@@ -2,6 +2,8 @@
 export class App{
     tab_object =[];
     constructor(tab_json){
+       // console.log("le tableau json");
+        //console.log(tab_json);
         tab_json.map((value) =>{
              if(value.typeV=="voiture")
                this.tab_object.push(new Voiture(value.idVehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.nb_vitesse,value.boite_vitesse,value.num_chassie,value.nb_cheveau,value.moteur));
@@ -52,28 +54,37 @@ export class Vehicule{
              }else if(option=="ville")
              {
                 //console.log(option);
-                if(tbFilter[option].toLowerCase()==this.ville.toLowerCase())
+                if(tbFilter[option].toLowerCase()==String(this.ville).toLowerCase())
                 c++;
              }else if(option=="couleur")
              {
-                //console.log(option);
-                if(tbFilter[option].toLowerCase()==this.couleur.toLowerCase())
+                console.log(this.couleur);
+                if(tbFilter[option].toLowerCase()==String(this.couleur).toLowerCase())
                 c++;
-             }else if(option=="prix")
+             }else if(option=="prix_min")
              {
-                //console.log(option);
-                if(tbFilter[option]>=this.prix)
-                c++;
+                console.log(option);
+                if(this.prix>=tbFilter[option]&&this.prix<=tbFilter["prix_max"])
+                {
+                    console.log("c'est bon pour : "+this.prix);
+                    c++;
+                    c++;
+                }
+                
              }else if(option=="moteur"&&this.typeV=="voiture")
              {
                 //console.log(option);
                 if(tbFilter[option].toLowerCase()==this.moteur.toLowerCase())
                 c++;
+             }else if(option=="type")
+             {
+                if(tbFilter[option].toLowerCase()==this.typeV.toLowerCase())
+                c++;
              }
              
         }
-        //console.log("la valeur de c : "+c+" la valeur de b :"+b);
-        if(c==b)
+        console.log("la valeur de c : "+c+" la valeur de b :"+b);
+        if(c!=0&&c==b)
         return true;
         
         return false

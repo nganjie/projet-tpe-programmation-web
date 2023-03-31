@@ -1,3 +1,23 @@
+<?php
+require_once "../php/database.php";
+ 
+ $marqueV = $db->query("SELECT DISTINCT  marque FROM voiture");
+ $marquer1 =$marqueV->fetchAll();
+ $marqueM = $db->query("SELECT DISTINCT  marque FROM moto");
+ $marquer2 =$marqueM->fetchAll();
+ $marqueVe = $db->query("SELECT DISTINCT  marque FROM velo");
+ $marquer3 =$marqueVe->fetchAll();
+ $tab_marque = array_merge($marquer1,$marquer2,$marquer3);
+ $ville  = $db->query("SELECT DISTINCT localisation FROM admin");
+ $resultville = $ville->fetchAll();
+ $couleur = $db->query("SELECT DISTINCT couleur FROM voiture");
+ $resultcouleur = $couleur->fetchAll();
+ $moteur = $db->query("SELECT DISTINCT moteur FROM voiture WHERE moteur !=''");
+ $resultmoteur = $moteur->fetchAll();
+ //var_dump($tab_marque); 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,8 +103,19 @@
         <h1>Filtre de recherche</h1>
         <div class="search_opt">
             <div class="select_option">
+            <select name="pets" id="type" class="select-search">
+                    <option value="">--TYPE VEHICULE--</option>
+                    <option value="voiture">voiture</option>
+                    <option value="moto">moto</option>
+                    <option value="velo">velo</option>                   
+                </select>
                 <select name="pets" id="marque" class="select-search">
                     <option value="">--Marque--</option>
+                    <?php
+                      foreach($tab_marque as $marque):
+                     ?>
+                     <option value="<?=$marque[0]?>"><?=$marque[0]?></option>
+                     <?php endforeach;?>
                     <option value="Peugeot">Peugeot</option>
                     <option value="Citroën">Citroën</option>
                     <option value="Renault">Renault</option>
@@ -95,6 +126,11 @@
 
                 <select name="pets" id="ville" class="select-search">
                     <option value="">--Ville--</option>
+                    <?php
+                      foreach($resultville as $villeV):
+                     ?>
+                     <option value="<?=$villeV[0]?>"><?=$villeV[0]?></option>
+                     <?php endforeach;?>
                     <option value="Douala">Douala</option>
                     <option value="Yaounde">Yaounde</option>
                     <option value="Bertoua">Bertoua</option>
@@ -104,6 +140,11 @@
 
                 <select name="pets" id="couleur" class="select-search">
                     <option value="">--Couleur--</option>
+                    <?php
+                      foreach($resultcouleur as $couleur1):
+                     ?>
+                     <option value="<?=$couleur1[0]?>"><?=$couleur1[0]?></option>
+                     <?php endforeach;?>
                     <option value="Rouge">Rouge</option>
                     <option value="Noir">Noir</option>
                     <option value="Jaune">Jaune</option>
@@ -114,6 +155,11 @@
 
                 <select name="pets" id="moteur" class="select-search">
                     <option value="">--Moteur--</option>
+                    <?php
+                      foreach($resultmoteur as $moteur1):
+                     ?>
+                     <option value="<?=$moteur1[0]?>"><?=$moteur1[0]?></option>
+                     <?php endforeach;?>
                     <option value="Diesel">Diesel</option>
                     <option value="Wankel">Wankel</option>
                     <option value="Stirling">Stirling</option>
@@ -179,6 +225,11 @@
 
     </div>
     <br><br><br><br>
+    
+        <form action ="" method="post" id="form-api" style="display:none">
+        <input type="text" name="type-demande" value="acceuil">
+        </form>
+    
 </body>
 <script src="../js/search_filter.js" type="module" defer></script>
 <script src="../js/template.js" type="module"></script>

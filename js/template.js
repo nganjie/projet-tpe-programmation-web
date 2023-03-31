@@ -1,6 +1,7 @@
 import {App,Vehicule,Voiture,Velo,Moto} from "../js/classe.js";
 import {search_choices,objLength} from "../js/search_filter.js";
 var b =search_choices.length;
+
 console.log(b);
 let r =0;
 var select_choix = document.querySelectorAll(".select-search");
@@ -135,7 +136,24 @@ console.log(Voiture1.nb_cheveau);
 const content = document.querySelector(".content");
 
 const section_template = document.querySelector(".section-reste");
-fetch("../js/donnes.json")
+
+var form_api = document.getElementById("form-api");
+//console.log(form_api[""]);
+console.log("la forme");
+fetch("../php/api.php",{
+    method:"POST",
+    body:new FormData(document.getElementById("form-api"))
+})
+.then(res => res.json())
+.then((data)=>{
+    console.log(data);
+})
+/*fetch("../js/donnes.json")
+.then(response => response.json())*/
+fetch("../php/api.php",{
+    method:"POST",
+    body:new FormData(document.getElementById("form-api"))
+})
 .then(response => response.json())
 .then((data)=>{
     console.log(data);
@@ -153,25 +171,36 @@ fetch("../js/donnes.json")
     setInterval(()=>{
         if()
     },3000)*/
+    var reload = false;
     function getteurdefiltre(){
         setInterval(()=>{
-            //console.log(objLength(search_choices));
+            console.log(objLength(search_choices));
             //console.log(b!=objLength(search_choices));
-            if((r==0)||(b!=objLength(search_choices)))
+            if((b!=objLength(search_choices)))
             {
                 r=1;
                 b = objLength(search_choices);
                 console.log(search_choices);
                 console.log("un monde en couille");
+                reload = true;
                 refreshFilter();
-            }
+            }else reload = false;
         },7000)
     } 
     getteurdefiltre();
     select_choix.forEach(elt =>{
         elt.addEventListener("change",refreshFilter)
     })
+    var tmp_section_template;
+    var conteur = 0;
     function refreshFilter(elt){
+        if(conteur==0)
+        {
+            tmp_section_template=section_template.innerHTML;
+            conteur++
+        }
+       if(reload===true)
+        section_template.innerHTML = tmp_section_template;
         var tabelt = app.Filter(search_choices);
         console.log("debut du spectacle");
         console.log(search_choices);
@@ -199,6 +228,7 @@ fetch("../js/donnes.json")
 function innerTemplateData(tab){
    
 }
+/*
 function Template(type,tab){
     let template;
     if(type=="voiture")
@@ -328,3 +358,4 @@ function Template(type,tab){
     </div>`;
      }
 }
+*/
