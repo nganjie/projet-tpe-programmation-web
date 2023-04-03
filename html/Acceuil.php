@@ -24,6 +24,7 @@ require_once "../php/database.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/styleheader.css">
     <link rel="stylesheet" href="../css/filtre_recherche.css">
@@ -33,21 +34,7 @@ require_once "../php/database.php";
     
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">VOITURE <span class="cm">CM</span> </a>
-            <div class="nav-links">
-                <ul>
-                    <li class="active"><a href="#">Accueil</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="#">Demande-specifique</a></li>
-                    <li><a href="#">Vendre</a></li>
-                    <li class="login"><a href="#">Login</a></li>
-                </ul>
-            </div>
-            <img src="../image/menu-btn.png" alt="menu voiture" class="menu-hamburger">
-        </nav>
-    </header>
+<?php include "header.php"; ?>
 
     <section class="slider-section">
         <div class="container">
@@ -228,11 +215,18 @@ require_once "../php/database.php";
     
         <form action ="" method="post" id="form-api" style="display:none">
         <input type="text" name="type-demande" value="acceuil">
+        <input type="text" name="idvehicule" >
         </form>
     
 </body>
+<script src="../js/profil.js"></script>
 <script src="../js/search_filter.js" type="module" defer></script>
-<script src="../js/template.js" type="module"></script>
+<script src="../js/template.js" type="module" defer></script>
     <script src="../js/index.js"></script>
+    <script src="../js/form_acceuil.js"></script>
+    <script langage="javascript">
+        document.getElementById("accueil").className ="active";
+    </script>
+    
 
 </html>

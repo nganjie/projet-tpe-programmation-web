@@ -5,12 +5,12 @@ export class App{
        // console.log("le tableau json");
         //console.log(tab_json);
         tab_json.map((value) =>{
-             if(value.typeV=="voiture")
-               this.tab_object.push(new Voiture(value.idVehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.nb_vitesse,value.boite_vitesse,value.num_chassie,value.nb_cheveau,value.moteur));
-              if(value.typeV=="moto")
-               this.tab_object.push(new Moto(value.idVehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.nb_vitesse,value.nb_roue));
-               if(value.typeV=="velo")
-               this.tab_object.push(new Velo(value.idVehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.idvelo,value.taille))
+             if(String(value.typeV).toLowerCase()=="voiture")
+               this.tab_object.push(new Voiture(value.idvehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.nb_vitesse,value.boite_vitesse,value.num_chassie,value.nb_cheveau,value.moteur));
+              if(String(value.typeV).toLowerCase()=="moto")
+               this.tab_object.push(new Moto(value.idvehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.nb_vitesse,value.nb_roue));
+               if(String(value.typeV).toLowerCase()=="velo")
+               this.tab_object.push(new Velo(value.idvehicule,value.nb_place,value.typeV,value.image,value.prix,value.immatri,value.marque,value.date_fab,value.date_mise,value.couleur,value.ville,value.idvelo,value.taille))
         })
     }
     Filter(tab)
@@ -134,7 +134,7 @@ export class Voiture extends Vehicule{
                     <i class="fa-regular fa-star"></i>
                 </div>    
                 <div class="button">
-                    <button class="about"> Voir plus</button>
+                    <button class="about" id="${this.idVehicule}"> Voir plus</button>
                     <button class="liker">Liker </button>
                 </div>                                    
             </div>                        
@@ -183,7 +183,7 @@ export class Moto extends Vehicule{
                     <i class="fa-regular fa-star"></i>
                 </div>    
                 <div class="button">
-                    <button class="about"> Voir plus</button>
+                    <button class="about" id="${this.idVehicule}"> Voir plus</button>
                     <button class="liker">Liker </button>
                 </div>                                    
             </div>                        
@@ -212,13 +212,13 @@ export class Velo extends Vehicule{
                     <div class="info-left">
                         <p><span class="marque">Marque :</span></p>
                         <p><span class="autre-info">nombre de place:</span></p>
-                        <p><span class="autre-info">date de fabrication:</span></p>
+                        <p><span class="autre-info">taille :</span></p>
                         <p><span class="autre-info">prix :</span></p>
                     </div>
                     <div class="info-right">
                         <p><span class="information">${this.marque}</span></p>
                         <p><span class="information">${this.nb_place}</span></p>
-                        <p></span><span class="information">${this.date_fab}</span></p>
+                        <p></span><span class="information">${this.taille}</span></p>
                         <p><span class="information">${this.prix} fcfa</span></p>
                         
                     </div> 
@@ -231,13 +231,14 @@ export class Velo extends Vehicule{
                     <i class="fa-regular fa-star"></i>
                 </div>    
                 <div class="button">
-                    <button class="about"> Voir plus</button>
+                    <button class="about" id="${this.idVehicule}"> Voir plus</button>
                     <button class="liker">Liker </button>
                 </div>                                    
             </div>                        
         </div>
     </div>`;
     }
+    
 }
 function objLength(obj){
     var i=0;

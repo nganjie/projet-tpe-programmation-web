@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+
+.box{
+   position: relative;
+    margin-top: 40px;
+    width: 600px;
+    height: 800px;
+    background: indigo;
+    border-radius: 8px;
+    overflow: hidden;
+
+}
+.box::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent,transparent,#45f3ff);
+    transform-origin:bottom right ;
+    animation: animate 6s linear infinite;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent,transparent,#45f3ff);
+    transform-origin:bottom right ;
+    animation: animate 6s linear infinite;
+    animation-delay: -3 s;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.form-d{
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background: indigo;
+    /*z-index: 10;*/
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+.form-d h2{
+    color: #45f3ff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-style: italic;
+}
+.inputbox{
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+    font-style: italic;
+}
+.inputbox input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: turquoise;
+    border: none;
+    outline: none;
+    color: indigo;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+}
+.inputbox span{
+    position: relative;
+    left: 0;
+    padding: 20px 10px 10px;
+    font-size: 1em;
+    color: #8f8f8f;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+.inputbox input:valid ~ span,
+.inputbox input:focus ~ span{
+    color: #45f3ff;
+    transform:translateY(-34px);
+    font-size: 0.75em;
+}
+.inputbox input:valid ~ i,
+.inputbox input:focus ~ i{
+    height: 44px; 
+}
+input[type="button"]:hover{
+    position: absolute;
+    width: 50px;
+    border-radius: 5px;
+    justify-items: center;
+    color: white;
+    background-color: indigo;
+}
+.select{
+    position: relative;
+    margin:20px ;
+}
+.label{
+    font-style: italic;
+}
+.boutton{
+    width: 200px;
+    text-align: center;
+    padding: 20px 10px;
+    margin-right: 20px;
+}

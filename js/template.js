@@ -1,7 +1,7 @@
 import {App,Vehicule,Voiture,Velo,Moto} from "../js/classe.js";
 import {search_choices,objLength} from "../js/search_filter.js";
 var b =search_choices.length;
-
+//export let pageinfo;
 console.log(b);
 let r =0;
 var select_choix = document.querySelectorAll(".select-search");
@@ -159,6 +159,8 @@ fetch("../php/api.php",{
     console.log(data);
    var app = new App(data);
    console.log(app.tab_object)
+   content.innerHTML ="";
+   section_template.innerHTML= "";
    app.tab_object.map((value)=>{
         //if(value instanceof Voiture)
         
@@ -167,6 +169,39 @@ fetch("../php/api.php",{
         
         
     })
+     console.log(form_api["idvehicule"]);
+     form_api["type-demande"].value = "infotemplate";
+     console.log(form_api["type-demande"].value);
+    let template_about = document.querySelectorAll(".about");
+    template_about.forEach(elt=>{
+        elt.addEventListener("click",(e)=>{
+            e.preventDefault();
+            window.location.href =`../html/infoVehicule.php?id=${elt.id}`;
+            pageTemplate(elt);
+        
+    })})
+     function pageTemplate(elt)
+    {
+       // e.preventDefault();
+       form_api["idvehicule"].value = elt.id;
+        console.log(form_api["idvehicule"].value);
+           fetch("../php/api.php",{
+            method:"POST",
+            body:new FormData(document.getElementById("form-api"))
+        })
+        .then(res1 =>res1.json())
+        .then((data1)=>{
+            /*console.log(data1);
+            console.log(data1.typeV);
+           pageinfo = pageinfoVehicule(data1.typeV,data1)
+           console.log(pageinfo);
+           window.location.href ="../html/infoVehicule.php";*/
+        })
+        
+    }
+
+    //console.log(template_about); 
+
     /*var b =0;
     setInterval(()=>{
         if()
@@ -213,6 +248,15 @@ fetch("../php/api.php",{
             tabelt.map((valuefilter)=>{
                 section_template.innerHTML +=valuefilter.template();
             })
+            let template_about_tmp = document.querySelectorAll(".about");
+            console.log(template_about_tmp);
+            template_about_tmp.forEach(elt=>{
+                elt.addEventListener("click",(e)=>{
+                    e.preventDefault();
+                    window.location.href =`../html/infoVehicule.php?id=${elt.id}`;
+                    pageTemplate(elt);
+                
+            })})
         }else {
             setTimeout(()=>{
                 alert("aucun vehicule ne correspond à ses caractèristiques");
@@ -228,6 +272,7 @@ fetch("../php/api.php",{
 function innerTemplateData(tab){
    
 }
+
 /*
 function Template(type,tab){
     let template;
