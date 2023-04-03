@@ -169,6 +169,12 @@ fetch("../php/api.php",{
         
         
     })
+    var tmp_liker=document.querySelector(".liker");
+    console.log(tmp_liker);
+    tmp_liker.addEventListener("click",(e)=>{
+        e.preventDefault();
+        alert("votre Like à été enregistrer");
+    })
      console.log(form_api["idvehicule"]);
      form_api["type-demande"].value = "infotemplate";
      console.log(form_api["type-demande"].value);
@@ -248,6 +254,11 @@ fetch("../php/api.php",{
             tabelt.map((valuefilter)=>{
                 section_template.innerHTML +=valuefilter.template();
             })
+            var tmp_liker1=document.querySelector(".liker");
+    tmp_liker1.addEventListener("click",(e)=>{
+        e.preventDefault();
+        alert("votre Like à été enregistrer");
+    })
             let template_about_tmp = document.querySelectorAll(".about");
             console.log(template_about_tmp);
             template_about_tmp.forEach(elt=>{
